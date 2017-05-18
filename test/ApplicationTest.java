@@ -217,7 +217,7 @@ public class ApplicationTest {
         assertThat(status(result)).isEqualTo(OK);
         assertThat(contentType(result)).isEqualTo("text/html");
         assertThat(charset(result)).isEqualTo("utf-8");
-        assertThat(charset(result)).contains("ログアウト");
+        assertThat(charset(result)).contains("ログアウトしました");
     }
     // セッションが破棄される	insert	
     @Test
