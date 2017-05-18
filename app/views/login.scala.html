@@ -1,0 +1,65 @@
+ @(title: String, registerForm: Form[models.Task])
+ @import helper._
+    
+        @main("NEW TASK"){
+            <legend class="uk-margin uk-xlarge-left uk-margin-top">@title</legend>
+            @form(action = routes.Application.create){
+                @inputText(
+                    field = registerForm("taskname"),
+                    '_label -> "TASK NAME",
+                    '_class -> "uk-margin-xlarge-left uk-margin-top"
+                )
+                @textarea(
+                field = registerForm("taskmemo"),
+                '_label -> "MEMO",
+                '_class -> "uk-margin-xlarge-left uk-margin-top"
+                )
+                @inputDate(
+                field = registerForm("deadline"),
+                '_label -> "DEADLINE",
+                '_class -> "uk-margin-xlarge-left uk-margin-top"
+                )
+                <input type="submit" value="CREATE" class="uk-button uk-button-primary uk-margin-xlarge-left  uk-margin-top">
+            }
+        }
+
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>ログイン</h1>
+        <form action="list.html" method="get">
+        <table>
+            <tr>
+                <th>
+                    ユーザID
+                </th>
+                <td>
+                    <input type="text" name="ID" value="">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    パスワード
+                </th>
+                <td>
+                    <input type="password" name="Password" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="ログイン">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <A href="">新規登録</A>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </body>
+</html>
