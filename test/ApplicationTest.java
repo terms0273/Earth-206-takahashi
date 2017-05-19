@@ -73,8 +73,11 @@ public class ApplicationTest {
         Http.Session temp=session (result);
         assertThat(temp.get("key")).isEqualTo("id");      
     }
-    
-    // パスワード不正ログイン画面に戻される 　ログイン画面への転送確認、転送先が正しいか
+   
+     
+    /**
+     * パスワード不正ログイン画面に戻される 　ログイン画面への転送確認、転送先が正しいか
+     */
     @Test
     public void reLogin(){
         Result result = route(fakeRequest(POST, "/login"));
@@ -84,8 +87,8 @@ public class ApplicationTest {
     
     // ログイン画面で、ユーザー登録へ移動できる
     @Test
-     public void login_user(){
-        Result result = route(fakeRequest(GET, "/user/resister"));
+     public void loginUserTest(){
+        Result result = route(fakeRequest(GET, "/user/register"));
         assertThat(status(result)).isEqualTo(OK);
         assertThat(contentType(result)).isEqualTo("text/html");
         assertThat(charset(result)).isEqualTo("utf-8");
@@ -95,11 +98,11 @@ public class ApplicationTest {
     // ホーム画面より、ユーザー登録へ移動できる　
     @Test
     public void main_user(){
-        Result result = route(fakeRequest(GET, "/user/resister"));
+        Result result = route(fakeRequest(GET, "/user/register"));
         assertThat(status(result)).isEqualTo(OK);
         assertThat(contentType(result)).isEqualTo("text/html");
         assertThat(charset(result)).isEqualTo("utf-8");
-        assertThat(charset(result)).contains("ユーザー");   
+        assertThat(contentAsString(result)).contains("ユーザー");   
      }  
         
     // CSRF対策をしている
@@ -127,7 +130,7 @@ public class ApplicationTest {
         assertThat(status(result)).isEqualTo(OK);
         assertThat(contentType(result)).isEqualTo("text/html");
         assertThat(charset(result)).isEqualTo("utf-8");
-        assertThat(charset(result)).contains("パスワード変更");
+        assertThat(contentAsString(result)).contains("パスワード変更");
     }
     
     // 登録成功時、アカウント作成完了を表す画面を表示する		
@@ -137,7 +140,7 @@ public class ApplicationTest {
         assertThat(status(result)).isEqualTo(OK);
         assertThat(contentType(result)).isEqualTo("text/html");
         assertThat(charset(result)).isEqualTo("utf-8");
-        assertThat(charset(result)).contains("登録完了");
+        assertThat(contentAsString(result)).contains("登録完了");
     }
     
     // ユーザー削除時、確認を促すメッセージを表示する		
@@ -147,7 +150,7 @@ public class ApplicationTest {
         assertThat(status(result)).isEqualTo(OK);
         assertThat(contentType(result)).isEqualTo("text/html");
         assertThat(charset(result)).isEqualTo("utf-8");
-        assertThat(charset(result)).contains("削除しますか？");
+        assertThat(contentAsString(result)).contains("削除しますか？");
     }
     
     // ユーザー登録時、専用の画面が表示される		
@@ -157,7 +160,7 @@ public class ApplicationTest {
         assertThat(status(result)).isEqualTo(OK);
         assertThat(contentType(result)).isEqualTo("text/html");
         assertThat(charset(result)).isEqualTo("utf-8");
-        assertThat(charset(result)).contains("ユーザー");
+        assertThat(contentAsString(result)).contains("ユーザー");
     }
     
     // 管理ユーザがユーザ登録削除できる		
@@ -183,7 +186,7 @@ public class ApplicationTest {
     
     // 呼び出す値がデータベースに入る
     @Test
-    public void model_test(){
+    public void model_test2(){
         // 値を入力し、データベースに入る
         start(fakeApplication(inMemoryDatabase()));
         User user_info = new User();
@@ -207,7 +210,7 @@ public class ApplicationTest {
         assertThat(status(result)).isEqualTo(OK);
         assertThat(contentType(result)).isEqualTo("text/html");
         assertThat(charset(result)).isEqualTo("utf-8");
-        assertThat(charset(result)).contains("ログアウト");
+        assertThat(contentAsString(result)).contains("ログアウト");
     }
     
     // ログアウト成功時、完了画面へ移動する		
@@ -217,7 +220,7 @@ public class ApplicationTest {
         assertThat(status(result)).isEqualTo(OK);
         assertThat(contentType(result)).isEqualTo("text/html");
         assertThat(charset(result)).isEqualTo("utf-8");
-        assertThat(charset(result)).contains("ログアウトしました");
+        assertThat(contentAsString(result)).contains("ログアウトしました");
     }
     // セッションが破棄される	insert	
     @Test

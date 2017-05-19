@@ -6,6 +6,10 @@ import play.*;
 import play.db.ebean.Model;
 import play.mvc.*;
 
+/**
+ * データベースに@Idの中身を登録する
+ * @author r-takahashi
+ */
 @Entity
 public class UserInformation extends Model {
     @Id
@@ -14,5 +18,5 @@ public class UserInformation extends Model {
     public String userName;
     public String password;
 
-    
+    public static Finder<Long, UserInformation> find = new Finder<Long, UserInformation>(Long.class, UserInformation.class);
 }

@@ -6,18 +6,17 @@
             @form(action = routes.LoginController.doLogin){
                 @inputText(
                     field = registerForm("userId"),
-                    '_label -> "ユーザID"
-             
+                    '_label -> "ユーザID"             
                 )
                 @inputPassword(
                 field = registerForm("password"),
-                '_label -> "パスワード",
-                '_class -> "uk-margin-xlarge-left uk-margin-top"
+                '_label -> "パスワード"                
                 )              
                 <input type="submit" value="ログイン" class="uk-button uk-button-primary uk-margin-xlarge-left  uk-margin-top">
             }
+            <A href="">新規登録</A>
         
-
+<!--
 <html>
     <head>
         <title>Login</title>
@@ -58,3 +57,4 @@
         </form>
     </body>
 </html>
+-->

@@ -11,8 +11,9 @@ public class LoginController extends Controller {
    /**
     * form用の内部クラス
     */
-    public static class SampleForm{
-        public String message;     // あとでメッセージクラスつくる？ 
+    public static class findForm{
+        public String userId;
+        public String password;
     }
     
     /**
@@ -26,14 +27,39 @@ public class LoginController extends Controller {
     }
     
     /**
+     * ブラウザ上で、ログインボタンが押されたときに実施
+     * POST    /doLogin              controllers.LoginController.doLogin()
      * 
+     * フォームから値を持ってくる
      * @return 戻り値　returnで戻ってきた値が、メソッドの呼び出し側に送られる
      */
     public static Result doLogin(){
-        //formの処理
-        return redirect(controllers.routes.LoginController.loginView());
+        // 値の照合
+        Form<findForm> form = new Form(findForm.class).bindFromRequest();
+        if(!form.hasErrors()){
+            findForm ff =form.get();
+            /**
+             * 入力されたユーザーIDが、UserInformationに存在することを確認
+             * eq : モデルの情報とfindFormの情報が一致するか調べて、DBの情報を持ってきてくれる
+             */
+            UserInformation user = UserInformation.find.where().eq("userId", ff.userId).findUnique();
+            /**
+             * IDの確認をする
+             * 入力されたIDがDBになかったときは、ログインできない。
+             */
+            if(user != null){
+                /**
+                 * passwordを確認する
+                 * 入力されたパスワードと、DBのパスワードが一致するか調べる
+                 */
+                if(user.password == ff.password){
+                    /**
+                     * ログイン後の画面に移動
+                     */
+                    return ok(index.render("ログイン完了"));
+                }
+            }
+        }
+    return redirect(controllers.routes.LoginController.loginView());
     }
-    
-    
-
 }
