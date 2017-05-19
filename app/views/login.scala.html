@@ -1,27 +1,22 @@
- @(title: String, registerForm: Form[models.Task])
+ @(title: String, registerForm: Form[models.UserInformation])
  @import helper._
     
-        @main("NEW TASK"){
+        
             <legend class="uk-margin uk-xlarge-left uk-margin-top">@title</legend>
-            @form(action = routes.Application.create){
+            @form(action = routes.LoginController.doLogin){
                 @inputText(
-                    field = registerForm("taskname"),
-                    '_label -> "TASK NAME",
-                    '_class -> "uk-margin-xlarge-left uk-margin-top"
+                    field = registerForm("userId"),
+                    '_label -> "ユーザID"
+             
                 )
-                @textarea(
-                field = registerForm("taskmemo"),
-                '_label -> "MEMO",
+                @inputPassword(
+                field = registerForm("password"),
+                '_label -> "パスワード",
                 '_class -> "uk-margin-xlarge-left uk-margin-top"
-                )
-                @inputDate(
-                field = registerForm("deadline"),
-                '_label -> "DEADLINE",
-                '_class -> "uk-margin-xlarge-left uk-margin-top"
-                )
-                <input type="submit" value="CREATE" class="uk-button uk-button-primary uk-margin-xlarge-left  uk-margin-top">
+                )              
+                <input type="submit" value="ログイン" class="uk-button uk-button-primary uk-margin-xlarge-left  uk-margin-top">
             }
-        }
+        
 
 <html>
     <head>
