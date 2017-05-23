@@ -49,14 +49,19 @@ public class LoginController extends Controller {
              */
             if(user != null){
                 /**
-                 * passwordを確認する
-                 * 入力されたパスワードと、DBのパスワードが一致するか調べる
+                 * ユーザ情報が削除されていないか確認する
                  */
-                if(user.password == ff.password){
+                if(user.delete_flag == 0){
                     /**
-                     * ログイン後の画面に移動
+                     * passwordを確認する
+                     * 入力されたパスワードと、DBのパスワードが一致するか調べる
                      */
-                    return ok(index.render("ログイン完了"));
+                    if(user.password == ff.password){
+                        /**
+                         * ログイン後の画面に移動
+                         */                    
+                        return ok(index.render("ログイン完了"));
+                    }
                 }
             }
         }

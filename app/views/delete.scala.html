@@ -9,11 +9,14 @@
                 <td>@userInformation.userName</td>
                 <td>@userInformation.password</td>               
                 
-                <td><button class="uk-button uk-button-default uk-button-small" onclick="location.href='/login'">削除</button></td>
+                <td><button class="uk-button uk-button-default uk-button-small" onclick="location.href='@routes.EditDeleteController.doDelete(userInformation.id)'">削除</button></td>
                 
             </tr>
+            <tr>
+                <A onclick=history.go(-1)>戻る</A>
+            </tr>
             }
-            <A onclick=history.go(-1)>戻る</A>
+            
 
 <!--
 <html>

@@ -9,7 +9,7 @@ POST  /doLogin              controllers.LoginController.doLogin()
 GET    /register                controllers.RegisterController.registerView()
 POST  /doRegister            controllers.RegisterController.doRegister()
 GET    /delete                  controllers.EditDeleteController.deleteView()
-#POST /doDelete               controllers.EditDeleteController.doDelete()
+GET /doDelete/:id               controllers.EditDeleteController.doDelete(id:Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -59,6 +59,7 @@ public class RegisterController extends Controller {
                 user.userId = ff.userId;
                 user.userName = ff.userName;
                 user.password = ff.password;
+                user.delete_flag = 0;
                 user.save();
                 return ok(index.render("登録完了"));
             }
