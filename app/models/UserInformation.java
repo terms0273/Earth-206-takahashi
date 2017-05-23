@@ -17,6 +17,7 @@ public class UserInformation extends Model {
     public String userId;
     public String userName;
     public String password;
+    public String master; 
 
     public static Finder<Long, UserInformation> find = new Finder<Long, UserInformation>(Long.class, UserInformation.class);
 }

@@ -47,14 +47,15 @@ public class RegisterController extends Controller {
              * 入力されたユーザーIDが、UserInformationに存在することを確認
              * ne : モデルの情報とfindFormの情報が一致するか調べて、DBの情報に一致するものを持ってきてくれる
              */
-            UserInformation user = UserInformation.find.where().eq("userId", ff.userId).findUnique();
+            UserInformation checkUser = UserInformation.find.where().eq("userId", ff.userId).findUnique();
             
             
             /**
              * IDを確認する
              * 入力されたIDが、DBにないとき登録できる
              */
-            if(user==null){
+            if(checkUser==null){
+                UserInformation user = new UserInformation();
                 user.userId = ff.userId;
                 user.userName = ff.userName;
                 user.password = ff.password;

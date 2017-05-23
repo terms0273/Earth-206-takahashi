@@ -5,9 +5,11 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /login                    controllers.LoginController.loginView()
-POST    /doLogin              controllers.LoginController.doLogin()
+POST  /doLogin              controllers.LoginController.doLogin()
 GET    /register                controllers.RegisterController.registerView()
-POST  /doRegister           controllers.RegisterController.doRegister()
+POST  /doRegister            controllers.RegisterController.doRegister()
+GET    /delete                  controllers.EditDeleteController.deleteView()
+#POST /doDelete               controllers.EditDeleteController.doDelete()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
