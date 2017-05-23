@@ -1,9 +1,26 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+@(title: String, registerForm: Form[models.UserInformation])
+ @import helper._
+    
+        
+            <legend>@title</legend>
+            @form(action = routes.RegisterController.doRegister){
+                @inputText(
+                    field = registerForm("userId"),
+                    '_label -> "ユーザID"             
+                )
+                @inputText(
+                    field = registerForm("userName"),
+                    '_label -> "ユーザ名"
+                )
+                @inputPassword(
+                field = registerForm("password"),
+                '_label -> "パスワード"                
+                )              
+                <input type="submit" value="新規登録" class="uk-button uk-button-primary uk-margin-xlarge-left  uk-margin-top">
+            }
+            <A href="/login">ログイン画面</A>
+
+<!--            
 <html>
     <head>
         <title>Register</title>
@@ -52,3 +69,4 @@ and open the template in the editor.
         </form>
     </body>
 </html>
+-->

@@ -2,7 +2,7 @@
  @import helper._
     
         
-            <legend class="uk-margin uk-xlarge-left uk-margin-top">@title</legend>
+            <legend>@title</legend>
             @form(action = routes.LoginController.doLogin){
                 @inputText(
                     field = registerForm("userId"),
@@ -14,7 +14,7 @@
                 )              
                 <input type="submit" value="ログイン" class="uk-button uk-button-primary uk-margin-xlarge-left  uk-margin-top">
             }
-            <A href="">新規登録</A>
+            <A href="/register">新規登録</A>
         
 <!--
 <html>
