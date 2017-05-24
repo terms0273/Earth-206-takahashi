@@ -3,7 +3,9 @@
     
         
             <legend>@title</legend>
+            
             @form(action = routes.RegisterController.doRegister){
+                @CSRF.formField
                 @inputText(
                     field = registerForm("userId"),
                     '_label -> "ユーザID"             
@@ -19,54 +21,3 @@
                 <input type="submit" value="新規登録" class="uk-button uk-button-primary uk-margin-xlarge-left  uk-margin-top">
             }
             <A href="/login">ログイン画面</A>
-
-<!--            
-<html>
-    <head>
-        <title>Register</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <h1>新規登録</h1>
-        <form action="list.html" method="get">
-        <table>
-            <tr>
-                <th>
-                    ユーザID
-                </th>
-                <td>
-                    <input type="text" name="ID" value="">
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    ユーザ名
-                </th>
-                <td>
-                    <input type="text" name="userName" value="">
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    パスワード
-                </th>
-                <td>
-                    <input type="password" name="Password" value="">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="登録">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <A onclick=history.go(-1)>戻る</A>
-                </td>
-            </tr>
-        </table>
-        </form>
-    </body>
-</html>
--->

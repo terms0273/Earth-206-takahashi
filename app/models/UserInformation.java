@@ -17,7 +17,7 @@ public class UserInformation extends Model {
     public String userId;
     public String userName;
     public String password;
-    public String master;
+    public String type;
     
     public Integer delete_flag;
 

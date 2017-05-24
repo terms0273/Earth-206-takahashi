@@ -1,9 +1,10 @@
- @(title: String, registerForm: Form[models.UserInformation])
+ @(title: String, registerForm: Form[dto.findForm])
  @import helper._
     
         
             <legend>@title</legend>
             @form(action = routes.LoginController.doLogin){
+                @CSRF.formField 
                 @inputText(
                     field = registerForm("userId"),
                     '_label -> "ユーザID"             
@@ -15,46 +16,3 @@
                 <input type="submit" value="ログイン" class="uk-button uk-button-primary uk-margin-xlarge-left  uk-margin-top">
             }
             <A href="/register">新規登録</A>
-        
-<!--
-<html>
-    <head>
-        <title>Login</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <h1>ログイン</h1>
-        <form action="list.html" method="get">
-        <table>
-            <tr>
-                <th>
-                    ユーザID
-                </th>
-                <td>
-                    <input type="text" name="ID" value="">
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    パスワード
-                </th>
-                <td>
-                    <input type="password" name="Password" value="">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="ログイン">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <A href="">新規登録</A>
-                </td>
-            </tr>
-        </table>
-        </form>
-    </body>
-</html>
--->

@@ -1,20 +1,17 @@
 package controllers;
 
+import auth.*;
+import dto.findForm;
 import models.UserInformation;
 import play.*;
 import play.data.Form;
 import play.mvc.*;
 import static play.mvc.Results.ok;
 import views.html.*;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginController extends Controller {
-   /**
-    * form用の内部クラス
-    */
-    public static class findForm{
-        public String userId;
-        public String password;
-    }
+   
     
     /**
      * loginへのアクセスがあったら、routeからLoginControllerのloginViewがよばれる
@@ -22,7 +19,7 @@ public class LoginController extends Controller {
      * @return 
      */
     public static Result loginView() {
-        Form<UserInformation> form = new Form(UserInformation.class);
+        Form<findForm> form = new Form(findForm.class);
         return ok(login.render("ログイン", form));      // login.scala.htmlと連携する
     }
     
@@ -56,7 +53,11 @@ public class LoginController extends Controller {
                      * passwordを確認する
                      * 入力されたパスワードと、DBのパスワードが一致するか調べる
                      */
-                    if(user.password == ff.password){
+                    if(BCrypt.checkpw(ff.password, user.password)){
+                        /**
+                         * セッションに入れる
+                         */
+                        session("userId", user.userId);
                         /**
                          * ログイン後の画面に移動
                          */                    
@@ -66,5 +67,24 @@ public class LoginController extends Controller {
             }
         }
     return redirect(controllers.routes.LoginController.loginView());
+    }
+    /**
+     * セッションを消すところ
+     * ログアウトの時に必要、logoutが実行されると動く
+     */
+    public static void clearSession(){
+        session().clear();
+        
+    }
+    
+    /**
+     * ログアウトするところ
+     * セッションを消した後、ログイン画面へ戻る
+     * @return 
+     */
+    @Security.Authenticated(Secured.class)
+    public static Result logout(){
+        clearSession();
+        return redirect(routes.LoginController.loginView());
     }
 }

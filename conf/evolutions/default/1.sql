@@ -8,6 +8,8 @@ create table user_information (
   user_id                   varchar(255),
   user_name                 varchar(255),
   password                  varchar(255),
+  type                      varchar(255),
+  delete_flag               integer,
   constraint pk_user_information primary key (id))
 ;
 

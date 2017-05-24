@@ -3,13 +3,14 @@
     
         
             <legend>@title</legend>
+            <button onclick="location.href='/logout'">ログアウト</button>
             @for(userInformation <- list){
             <tr>
                 <td>@userInformation.userId</td>
                 <td>@userInformation.userName</td>
                 <td>@userInformation.password</td>               
                 
-                <td><button class="uk-button uk-button-default uk-button-small" onclick="location.href='@routes.EditDeleteController.doDelete(userInformation.id)'">削除</button></td>
+                <td><button class="uk-button uk-button-default uk-button-small" onclick="location.href='/delete'">削除</button></td>
                 
             </tr>
             <tr>
