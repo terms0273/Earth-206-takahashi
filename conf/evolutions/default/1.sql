@@ -4,7 +4,7 @@
 # --- !Ups
 
 create table user_information (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   user_id                   varchar(255),
   user_name                 varchar(255),
   password                  varchar(255),
@@ -13,14 +13,18 @@ create table user_information (
   constraint pk_user_information primary key (id))
 ;
 
+create sequence user_information_seq;
+
 
 
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table user_information;
+drop table if exists user_information;
 
-SET FOREIGN_KEY_CHECKS=1;
+SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists user_information_seq;
 
