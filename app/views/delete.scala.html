@@ -1,0 +1,68 @@
+@(title: String, list: List[models.UserInformation])
+ @import helper._
+    
+        
+            <legend>@title</legend>
+            <button onclick="location.href='/logout'">ログアウト</button>
+            @for(userInformation <- list){
+            <tr>
+                <td>@userInformation.userId</td>
+                <td>@userInformation.userName</td>
+                <td>@userInformation.password</td>               
+                
+                <td><button class="uk-button uk-button-default uk-button-small" onclick="location.href='/delete'">削除</button></td>
+                
+            </tr>
+            <tr>
+                <A onclick=history.go(-1)>戻る</A>
+            </tr>
+            }
+            
+
+<!--
+<html>
+    <head>
+        <title>Delete</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>ユーザ削除</h1>
+        <form action="list.html" method="get">
+        <table>
+            <tr>
+                <th>
+                    ユーザID
+                </th>
+                <td>
+                    <input type="text" name="ID" value="">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    パスワード
+                </th>
+                <td>
+                    <input type="password" name="Password" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="検索">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="削除">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <A onclick=history.go(-1)>戻る</A>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </body>
+</html>
+-->

@@ -1,7 +1,8 @@
 @(message: String)
 
-@main("Welcome to Play") {
+@main("ホーム") {
 
-    @play20.welcome(message, style = "Java")
-
+    <a href="/register">新規登録</a>
+    <a href="/delete">ユーザ削除</a>
+    <button onclick="location.href='/logout'">ログアウト</button>
 }

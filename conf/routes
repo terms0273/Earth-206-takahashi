@@ -4,6 +4,15 @@
 
 # Home page
 GET     /                           controllers.Application.index()
+GET     /login                    controllers.LoginController.loginView()
+POST  /doLogin                controllers.LoginController.doLogin()
+GET /logout                    controllers.LoginController.loginView()
+GET    /register                controllers.RegisterController.registerView()
+POST  /doRegister            controllers.RegisterController.doRegister()
+GET    /delete                  controllers.EditDeleteController.deleteView()
+GET /doDelete/:id           controllers.EditDeleteController.doDelete(id:Long)
+#GET    /edit                     controllers.EditDeleteController.editView()
+#POST   /doEdit                controllers.EditDeleteController.doEdit()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

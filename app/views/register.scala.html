@@ -1,0 +1,23 @@
+@(title: String, registerForm: Form[models.UserInformation])
+ @import helper._
+    
+        
+            <legend>@title</legend>
+            
+            @form(action = routes.RegisterController.doRegister){
+                @CSRF.formField
+                @inputText(
+                    field = registerForm("userId"),
+                    '_label -> "ユーザID"             
+                )
+                @inputText(
+                    field = registerForm("userName"),
+                    '_label -> "ユーザ名"
+                )
+                @inputPassword(
+                field = registerForm("password"),
+                '_label -> "パスワード"                
+                )              
+                <input type="submit" value="新規登録" class="uk-button uk-button-primary uk-margin-xlarge-left  uk-margin-top">
+            }
+            <A href="/login">ログイン画面</A>

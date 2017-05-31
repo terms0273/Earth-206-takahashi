@@ -1,0 +1,18 @@
+ @(title: String, registerForm: Form[dto.findForm])
+ @import helper._
+    
+        
+            <legend>@title</legend>
+            @form(action = routes.LoginController.doLogin){
+                @CSRF.formField 
+                @inputText(
+                    field = registerForm("userId"),
+                    '_label -> "ユーザID"             
+                )
+                @inputPassword(
+                field = registerForm("password"),
+                '_label -> "パスワード"                
+                )              
+                <input type="submit" value="ログイン" class="uk-button uk-button-primary uk-margin-xlarge-left  uk-margin-top">
+            }
+            <A href="/register">新規登録</A>
